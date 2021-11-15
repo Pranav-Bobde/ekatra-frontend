@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://ekbackend.herokuapp.com/";
+const url = "https://ekatra-backend-mvp-1.herokuapp.com/";
 // const url = "http://127.0.0.1:5000/api/";
 
 class Auth {
