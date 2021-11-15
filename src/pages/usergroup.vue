@@ -376,6 +376,7 @@ import UserService from "../services/user.service";
 export default {
 data() {
   return {
+      addUserCount: 0,
       channel_name: "",
       channel_fields: [],
       channel_entries: [],
@@ -585,7 +586,15 @@ data() {
         this.$router.go();
       } catch (error) {
         this.message = error.response.data.message;
+        while(this.addUserCount>0){
+          // console.log('count:', this.addUserCount)
+          this.list.pop()
+          this.addUserCount-=1;
+        }
         this.$q.notify(this.message);
+        }finally{
+          this.$q.loading.hide()
+        }
       }
     },
 
@@ -609,18 +618,20 @@ data() {
     addRow() {
       if (this.editedIndex > -1) {
         Object.assign(this.data[this.editedIndex], this.editedItem);
+        this.addUserCount+=1
       } else {
         this.data.push(this.editedItem);
+        this.addUserCount+=1
       }
       this.close();
     },
-
     addUser() {
       if (this.editedIndex > -1) {
         Object.assign(this.list[this.editedIndex], this.editedItem);
       } else {
         this.updateList.push(this.editedItem);
         this.list.push(this.editedItem);
+        this.addUserCount+=1
       }
       this.close();
     },

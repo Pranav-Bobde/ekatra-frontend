@@ -72,21 +72,6 @@ module.exports = function (/* ctx */) {
       https: false,
       port: 8084,
       open: true, // opens browser window automatically
-      allowedHosts: ['127.0.0.1:5000'],
-      proxy: {
-        '/api': '127.0.0.1:5000'
-      },
-      before (app) {
-        const cors = require('cors')
-      
-        app.options('*',cors())
-        app.use(cors())
-      },
-      headers: {
-        // 'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
-        // 'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Origin': '*',
-      },
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
@@ -111,7 +96,8 @@ module.exports = function (/* ctx */) {
       plugins: [
         'Notify',
         'Dialog',
-        'QUploader'
+        'QUploader',
+        'Loading'
       ]
     },
 
