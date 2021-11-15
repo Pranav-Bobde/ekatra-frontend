@@ -1,6 +1,6 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-const API_URL = 'https://cors-anywhere.herokuapp.com/https://ekatra-backend-mvp-1.herokuapp.com/';
+const API_URL = 'https://ekatra-backend-mvp-1.herokuapp.com/';
 // const API_URL = 'http://127.0.0.1:5000/api/';
 
 class UserService {
