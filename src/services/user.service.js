@@ -1,15 +1,15 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-const API_URL = 'https://cors-anywhere.herokuapp.com/https://ekatra-backend-mvp-1.herokuapp.com/';
+const API_URL = 'https://ekatra-backend-mvp-1.herokuapp.com/';
 // const API_URL = 'http://127.0.0.1:5000/api/';
 
 class UserService {
     getCourse(){
-        return axios.get(API_URL + 'course',
+        return axios.get(API_URL + 'course/',
          { headers: authHeader() });
     }
     submitCourse(details){
-        return axios.post(API_URL+'course',details,
+        return axios.post(API_URL+'course/',details,
         { headers: authHeader()})
         .then(response => response.data);
     }
@@ -68,7 +68,7 @@ class UserService {
 
     deleteUser(g_id,s_id)
         {
-        return axios.delete(API_URL+`group/${g_id}/${s_id}`,
+        return axios.delete(API_URL+`group/${g_id}/${s_id}/`,
         { headers: authHeader() });
     }
     
@@ -78,7 +78,7 @@ class UserService {
     }
 
     scheduleCourse(g_id,c_id,details){
-        return axios.post(API_URL+`delivery/group/${g_id}/${c_id}`,details,
+        return axios.post(API_URL+`delivery/group/${g_id}/${c_id}/`,details,
         { headers: authHeader() })
         .then(response => response.data);
     }
