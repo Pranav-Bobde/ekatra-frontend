@@ -542,7 +542,7 @@ data() {
         };
         const response = await UserService.createUser(details);
         this.message = response.message;
-
+        
         this.$router.go();
       } catch (error) {
         this.message = error.response.data.message;
@@ -577,6 +577,7 @@ data() {
 
     async updateUser(name, id) {
       try {
+        this.$q.loading.show()
         const details = {
           name: name,
           description: "string",
@@ -592,9 +593,8 @@ data() {
           this.addUserCount-=1;
         }
         this.$q.notify(this.message);
-        }finally{
-          this.$q.loading.hide()
-        }
+      }finally{
+        this.$q.loading.hide()
       }
     },
 
@@ -625,6 +625,7 @@ data() {
       }
       this.close();
     },
+
     addUser() {
       if (this.editedIndex > -1) {
         Object.assign(this.list[this.editedIndex], this.editedItem);
@@ -636,7 +637,6 @@ data() {
       this.close();
     },
     deleteItem(item) {
-      console.log(item);
       const index = this.data.indexOf(item);
       confirm("Are you sure you want to delete this item?") &&
         this.data.splice(index, 1);
@@ -664,7 +664,6 @@ data() {
     },
     csvJSON(csv) {
       var vm = this;
-      console.log(csv);
       var lines = csv.split("\n");
       var result = [];
       var headers = lines[0].split(",");
@@ -700,7 +699,6 @@ data() {
           var csv = event.target.result;
           vm.parse_csv = vm.csvJSON(csv);
         };
-        console.log(this.parse_csv);
 
         reader.onerror = function(evt) {
           if (evt.target.error.name == "NotReadableError") {
