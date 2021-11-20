@@ -18,7 +18,7 @@
       >
       <br>
       <div class="text-center" >
-      <img src="https://vruksh.org/wp-content/uploads/2019/08/VEF_NB_Logo-150x150.png" />
+      <img src="~assets/VEF_NB_Logo-150x150.png" />
       </div>
       <br>
       <q-separator />
